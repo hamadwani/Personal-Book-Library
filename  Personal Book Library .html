@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Book Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f9;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #d1ecf1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Personal Book Library</h1>
+        <input type="text" id="search" placeholder="Search books...">
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Last Borrowed</th>
+                </tr>
+            </thead>
+            <tbody id="book-list">
+                <tr>
+                    <td>The Great Gatsby</td>
+                    <td>Classic</td>
+                    <td>2024-03-21</td>
+                </tr>
+                <tr>
+                    <td>Atomic Habits</td>
+                    <td>Self-Help</td>
+                    <td>2024-02-10</td>
+                </tr>
+                <tr>
+                    <td>The Hobbit</td>
+                    <td>Fantasy</td>
+                    <td>2024-03-05</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('search').addEventListener('input', function () {
+            let filter = this.value.toLowerCase();
+            let rows = document.querySelectorAll('#book-list tr');
+            
+            rows.forEach(row => {
+                let title = row.cells[0].textContent.toLowerCase();
+                row.style.display = title.includes(filter) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
